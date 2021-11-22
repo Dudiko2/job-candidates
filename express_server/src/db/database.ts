@@ -1,10 +1,9 @@
 import sqlite from "sqlite3";
-// const sqlite3 = require("sqlite3").verbose();
 const sqlite3 = sqlite.verbose();
 const DBSOURCE = "./src/db/db.sqlite";
 
-const db = () => {
-    new sqlite3.Database(DBSOURCE, (err) => {
+const connectDB = () => {
+    return new sqlite3.Database(DBSOURCE, (err) => {
         if (err) {
             // Cannot open database
             console.error(err.message);
@@ -15,4 +14,4 @@ const db = () => {
     });
 };
 
-export default db;
+export default connectDB;

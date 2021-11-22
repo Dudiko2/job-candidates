@@ -1,4 +1,5 @@
 import sqlite from "sqlite3";
+
 const sqlite3 = sqlite.verbose();
 const DBSOURCE = "./src/db/db.sqlite";
 

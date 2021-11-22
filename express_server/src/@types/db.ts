@@ -15,3 +15,14 @@ export type ICreateUser = (
     onError: ErrorCallback,
     onSuccess: SuccessCallback<IBaseUser>
 ) => void;
+
+export type IGetUser = (
+    email: string,
+    onError: ErrorCallback,
+    onSuccess: SuccessCallback<IUser>
+) => void;
+
+export type IGetCandidates = (
+    onError: ErrorCallback,
+    onSuccess: SuccessCallback<any[]>
+) => void;

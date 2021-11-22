@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import connectDB from "./database";
-import type { ICreateUser } from "../@types/db";
+import type { ICreateUser, IGetCandidates, IGetUser } from "../@types/db";
 
 const db = connectDB();
 
@@ -21,4 +21,23 @@ const createUser: ICreateUser = (
     );
 };
 
-export { createUser };
+const getUser: IGetUser = (email, onError, onSuccess) => {
+    db.get(
+        `SELECT username, email, password FROM user WHERE email='${email}'`,
+        (err, row) => {
+            if (err) return onError(err);
+
+            return onSuccess(row);
+        }
+    );
+};
+
+const getCandidates: IGetCandidates = (onError, onSuccess) => {
+    db.all(`SELECT * FROM candidate`, (err, rows) => {
+        if (err) return onError(err);
+
+        return onSuccess(rows);
+    });
+};
+
+export { createUser, getUser, getCandidates };

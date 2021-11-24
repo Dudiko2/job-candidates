@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Restricted from "./components/Restricted";
+import Home from "./pages";
+import SignIn from "./pages/SignIn";
+import NotFound from "./pages/NotFound";
+import SignUp from "./pages/SignUp";
+import Candidates from "./pages/Candidates";
+import CandidateProfile from "./pages/Candidates/[id]";
+import { AuthProvider } from "./lib/auth/Auth";
+import { ROUTES } from "./constants";
+import type { FC } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: FC = () => {
+    return (
+        <AuthProvider>
+            <Routes>
+                <Route path={ROUTES.INDEX} element={<Layout />}>
+                    {/* home will redirect guests to /login, and registered users to /candidates */}
+                    <Route index element={<Home />} />
+                    <Route path={ROUTES.SIGNIN} element={<SignIn />} />
+                    <Route path={ROUTES.SIGNUP} element={<SignUp />} />
+                    <Route element={<Restricted />}>
+                        <Route
+                            path={ROUTES.CANDIDATES}
+                            element={<Candidates />}
+                        />
+                        <Route
+                            path={`${ROUTES.CANDIDATES}/:id`}
+                            element={<CandidateProfile />}
+                        />
+                    </Route>
+                    <Route path="*" element={<NotFound />} />
+                </Route>
+            </Routes>
+        </AuthProvider>
+    );
+};
 
 export default App;

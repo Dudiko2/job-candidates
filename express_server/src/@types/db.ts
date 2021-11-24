@@ -7,6 +7,10 @@ export interface IUser extends IBaseUser {
     password: string;
 }
 
+export interface IDecodedUserJWT extends IBaseUser {
+    iat: number;
+}
+
 export type ErrorCallback = (e: Error) => void;
 export type SuccessCallback<T = unknown> = (data: T) => void;
 

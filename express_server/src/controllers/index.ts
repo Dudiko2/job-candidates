@@ -1,4 +1,13 @@
-import { signUpController, signInController } from "./users";
+import {
+    signUpController,
+    signInController,
+    getCurrentUserController
+} from "./users";
 import { getCandidatesController } from "./candidates";
 
-export { signUpController, signInController, getCandidatesController };
+export {
+    signUpController,
+    signInController,
+    getCurrentUserController,
+    getCandidatesController
+};

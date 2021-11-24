@@ -69,4 +69,14 @@ const signInController: RequestHandler = (req, res) => {
     );
 };
 
-export { signUpController, signInController };
+const getCurrentUserController: RequestHandler = (req, res) => {
+    // use after 'authenticateJWT' middleware
+    if (req.user) {
+        const { username, email } = req.user;
+        return res.json({ username, email });
+    }
+
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
+};
+
+export { signUpController, signInController, getCurrentUserController };

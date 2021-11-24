@@ -1,13 +1,47 @@
-// call to get current user by sending JWT
+import axios from "axios";
+import type {
+    Credentials,
+    IUser,
+    ApiAuthResponse,
+    CandidatesSuccessResponse,
+} from "../@types";
 
-// call to login
+const axiosInstance = axios.create({
+    baseURL: "http://localhost:8080/api/",
+});
 
-// call to signup
+const getCurrentUser = (token: string) => {
+    return axiosInstance.get("/me", {
+        headers: { Authorization: `Bearer ${token}` },
+    });
+};
 
-// call to get candidates
+const signIn = ({ email, password }: Credentials) => {
+    return axiosInstance.post<ApiAuthResponse>("/auth/sigin", {
+        email,
+        password,
+    });
+};
 
-const apiClient = () => {
-    console.log("api");
+const signUp = ({ username, email, password }: IUser) => {
+    return axiosInstance.post<ApiAuthResponse>("/auth/signup", {
+        username,
+        email,
+        password,
+    });
+};
+
+const getCandidates = (token: string) => {
+    return axiosInstance.get<CandidatesSuccessResponse>("/candidates", {
+        headers: { Authorization: `Bearer ${token}` },
+    });
+};
+
+const apiClient = {
+    getCurrentUser,
+    signIn,
+    signUp,
+    getCandidates,
 };
 
 export default apiClient;

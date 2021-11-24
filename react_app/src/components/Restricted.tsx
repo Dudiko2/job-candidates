@@ -4,12 +4,12 @@ import { ROUTES } from "../constants";
 import { useAuth } from "../lib/auth/Auth";
 
 const Restricted: FC = () => {
-    const foo = useAuth();
+    const { user } = useAuth();
     const location = useLocation();
 
-    console.log(foo);
+    console.log(user);
 
-    if (foo) return <Outlet />;
+    if (user) return <Outlet />;
 
     return <Navigate to={ROUTES.SIGNIN} state={{ from: location }} />;
 };

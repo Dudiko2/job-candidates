@@ -1,9 +1,10 @@
 import axios from "axios";
-import type {
+import {
     Credentials,
     IUser,
     ApiAuthResponse,
     CandidatesSuccessResponse,
+    UserResponse,
 } from "../@types";
 
 const axiosInstance = axios.create({
@@ -11,7 +12,7 @@ const axiosInstance = axios.create({
 });
 
 const getCurrentUser = (token: string) => {
-    return axiosInstance.get("/me", {
+    return axiosInstance.get<UserResponse>("/me", {
         headers: { Authorization: `Bearer ${token}` },
     });
 };

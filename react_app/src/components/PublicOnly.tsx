@@ -1,12 +1,14 @@
 import type { FC } from "react";
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet, Navigate, useLocation } from "react-router-dom";
 import { ROUTES } from "../constants";
 import { useAuth } from "../lib/auth/Auth";
 
 const PublicOnly: FC = () => {
-    const foo = useAuth();
+    const { user } = useAuth();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
-    if (foo) return <Navigate to={ROUTES.INDEX} />;
+    if (user) return <Navigate to={from} replace />;
 
     return <Outlet />;
 };

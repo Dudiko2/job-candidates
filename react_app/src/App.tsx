@@ -1,13 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Restricted from "./components/Restricted";
+import PublicOnly from "./components/PublicOnly";
 import Home from "./pages";
 import SignIn from "./pages/SignIn";
 import NotFound from "./pages/NotFound";
 import SignUp from "./pages/SignUp";
 import Candidates from "./pages/Candidates";
 import CandidateProfile from "./pages/Candidates/[id]";
-import { AuthProvider } from "./lib/auth/Auth";
+import { AuthProvider } from "./lib/auth";
 import { ROUTES } from "./constants";
 import type { FC } from "react";
 import "./App.css";
@@ -17,10 +18,10 @@ const App: FC = () => {
         <AuthProvider>
             <Routes>
                 <Route path={ROUTES.INDEX} element={<Layout />}>
-                    {/* home will redirect guests to /login, and registered users to /candidates */}
-                    <Route index element={<Home />} />
-                    <Route path={ROUTES.SIGNIN} element={<SignIn />} />
-                    <Route path={ROUTES.SIGNUP} element={<SignUp />} />
+                    <Route element={<PublicOnly />}>
+                        <Route path={ROUTES.SIGNIN} element={<SignIn />} />
+                        <Route path={ROUTES.SIGNUP} element={<SignUp />} />
+                    </Route>
                     <Route element={<Restricted />}>
                         <Route
                             path={ROUTES.CANDIDATES}

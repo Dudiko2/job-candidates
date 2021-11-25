@@ -7,8 +7,6 @@ const Restricted: FC = () => {
     const { user } = useAuth();
     const location = useLocation();
 
-    console.log(user);
-
     if (user) return <Outlet />;
 
     return <Navigate to={ROUTES.SIGNIN} state={{ from: location }} />;

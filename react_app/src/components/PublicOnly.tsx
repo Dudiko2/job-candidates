@@ -1,6 +1,5 @@
 import type { FC } from "react";
 import { Outlet, Navigate, useLocation } from "react-router-dom";
-import { ROUTES } from "../constants";
 import { useAuth } from "../lib/auth/Auth";
 
 const PublicOnly: FC = () => {

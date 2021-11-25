@@ -1,0 +1,18 @@
+.FormButton {
+    padding: 0.4rem 1rem;
+    margin: 0.2rem 0;
+    border: 2px solid black;
+    min-width: 6rem;
+    cursor: pointer;
+    background-color: #f6f6f6;
+}
+
+.FormButton[data-primary="true"] {
+    background-color: black;
+    color: white;
+    border-color: none;
+}
+
+.FormButton[data-primary="true"]:hover {
+    background-color: rgb(17, 17, 17);
+}

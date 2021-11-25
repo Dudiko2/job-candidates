@@ -11,6 +11,7 @@ import type {
     ApiAuthResponse,
     CandidatesSuccessResponse,
     UserResponse,
+    ICandidate,
 } from "./api";
 
 export type {
@@ -24,4 +25,5 @@ export type {
     CandidatesSuccessResponse,
     UserResponse,
     IAuthContext,
+    ICandidate,
 };

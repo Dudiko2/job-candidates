@@ -1,6 +1,6 @@
 export const ROUTES = {
     INDEX: "/",
-    SIGNIN: "signin",
-    SIGNUP: "SIGNUP",
-    CANDIDATES: "candidates",
+    SIGNIN: "/signin",
+    SIGNUP: "/signup",
+    CANDIDATES: "/candidates",
 };

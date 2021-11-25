@@ -1,0 +1,11 @@
+.Candidates {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 0.2rem;
+}

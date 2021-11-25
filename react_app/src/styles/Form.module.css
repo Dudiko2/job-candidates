@@ -1,0 +1,16 @@
+.FormWrapper {
+    background-color: #fefefe;
+    padding: 2rem 1rem;
+    border: 2px solid black;
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.Form > * + * {
+    margin: 1rem 0 0 0;
+}

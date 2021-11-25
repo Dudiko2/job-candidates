@@ -1,0 +1,12 @@
+.Layout {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 4rem;
+}
+
+.Layout main {
+    max-width: 900px;
+}

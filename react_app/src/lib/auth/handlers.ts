@@ -27,6 +27,8 @@ export const getCurrentUserCB: GetCurrentUserCB = async (token, callback) => {
 
     if (res.data.success) {
         const user = res.data.user;
-        callback(user);
+        return callback(user);
     }
+
+    callback(null);
 };

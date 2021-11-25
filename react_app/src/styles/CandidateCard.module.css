@@ -1,0 +1,59 @@
+.CandidateCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    border: 2px solid black;
+    margin: 1rem;
+    padding: 1rem 0 0 0;
+    flex: 0 1 29%;
+    min-width: 200px;
+}
+
+.CandidateCard > * + * {
+    margin-top: 0.6rem;
+}
+
+.avatar {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid black;
+    background-color: #fefefe;
+    height: 100px;
+    width: 100px;
+}
+
+.avatar img {
+    display: block;
+    width: 100%;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.job {
+    font-size: 0.8rem;
+}
+
+.button {
+    border: none;
+    background-color: black;
+    color: #fefefe;
+    font-weight: bold;
+    width: 100%;
+    padding: 0.4rem;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(31, 31, 31);
+}

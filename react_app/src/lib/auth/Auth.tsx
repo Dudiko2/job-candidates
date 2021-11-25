@@ -8,6 +8,7 @@ const AuthContext = createContext<IAuthContext>(null!);
 export const AuthProvider: FC = ({ children }) => {
     const [jwt, setJwt] = useState<string | null>(null);
     const [user, setUser] = useState<IBaseUser | null>(null);
+    const [loading, setLoading] = useState(false);
 
     const signIn = ({ email, password }: Credentials) =>
         signInCB({ email, password }, setJwt);
@@ -15,7 +16,11 @@ export const AuthProvider: FC = ({ children }) => {
     const signUp = ({ username, email, password }: IUser) =>
         signUpCB({ username, email, password }, setJwt);
 
-    const getCurrentUser = (token: string) => getCurrentUserCB(token, setUser);
+    const getCurrentUser = async (token: string) => {
+        setLoading(true);
+        await getCurrentUserCB(token, setUser);
+        setLoading(false);
+    };
 
     useEffect(() => {
         if (jwt) {
@@ -24,7 +29,7 @@ export const AuthProvider: FC = ({ children }) => {
     }, [jwt]);
 
     return (
-        <AuthContext.Provider value={{ user, signIn, signUp }}>
+        <AuthContext.Provider value={{ user, jwt, loading, signIn, signUp }}>
             {children}
         </AuthContext.Provider>
     );

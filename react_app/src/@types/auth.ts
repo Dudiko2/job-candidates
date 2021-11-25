@@ -10,7 +10,7 @@ export type SignUpCB = (
 
 export type GetCurrentUserCB = (
     token: string,
-    cb: (user: IBaseUser) => void
+    cb: (user: IBaseUser | null) => void
 ) => Promise<void>;
 
 export interface Credentials {
@@ -29,6 +29,8 @@ export interface IBaseUser {
 
 export interface IAuthContext {
     user: IBaseUser | null;
+    jwt: string | null;
+    loading: boolean;
     signIn: (creds: Credentials) => Promise<void>;
     signUp: (user: IUser) => Promise<void>;
 }

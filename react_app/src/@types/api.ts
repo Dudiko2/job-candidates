@@ -16,10 +16,20 @@ export interface FailureResponse {
 
 export interface CandidatesSuccessResponse {
     success: true;
-    candidates: any[];
+    candidates: ICandidate[];
 }
 
 export interface UserSuccessResponse {
     success: true;
     user: IBaseUser;
+}
+
+export interface ICandidate {
+    first_name: string;
+    last_name: string;
+    avatar: string;
+    gender: string;
+    id: number;
+    job_title: string;
+    job_description: string;
 }

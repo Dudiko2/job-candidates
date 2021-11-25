@@ -11,13 +11,13 @@ import CandidateProfile from "./pages/Candidates/[id]";
 import { AuthProvider } from "./lib/auth";
 import { ROUTES } from "./constants";
 import type { FC } from "react";
-import "./App.css";
 
 const App: FC = () => {
     return (
         <AuthProvider>
             <Routes>
                 <Route path={ROUTES.INDEX} element={<Layout />}>
+                    <Route index element={<Home />} />
                     <Route element={<PublicOnly />}>
                         <Route path={ROUTES.SIGNIN} element={<SignIn />} />
                         <Route path={ROUTES.SIGNUP} element={<SignUp />} />

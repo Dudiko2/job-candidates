@@ -18,7 +18,7 @@ const getCurrentUser = (token: string) => {
 };
 
 const signIn = ({ email, password }: Credentials) => {
-    return axiosInstance.post<ApiAuthResponse>("/auth/sigin", {
+    return axiosInstance.post<ApiAuthResponse>("/auth/signin", {
         email,
         password,
     });

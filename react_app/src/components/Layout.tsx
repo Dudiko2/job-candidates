@@ -1,11 +1,14 @@
 import type { FC } from "react";
 import { Outlet } from "react-router-dom";
+import styles from "../styles/Layout.module.css";
 
-const Layout: FC = ({ children }) => {
+const Layout: FC = () => {
     return (
-        <>
-            <Outlet />
-        </>
+        <div className={styles.Layout}>
+            <main>
+                <Outlet />
+            </main>
+        </div>
     );
 };
 

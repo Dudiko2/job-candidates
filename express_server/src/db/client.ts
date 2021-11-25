@@ -1,6 +1,11 @@
 import bcrypt from "bcryptjs";
 import connectDB from "./database";
-import type { ICreateUser, IGetCandidates, IGetUser } from "../@types/db";
+import type {
+    ICreateUser,
+    IGetCandidateById,
+    IGetCandidates,
+    IGetUser
+} from "../@types/db";
 
 const db = connectDB();
 
@@ -40,4 +45,13 @@ const getCandidates: IGetCandidates = (onError, onSuccess) => {
     });
 };
 
-export { createUser, getUser, getCandidates };
+const getCandidateById: IGetCandidateById = (id, onError, onSuccess) => {
+    if (id <= 0) return onError(new Error(`invalid id: ${id}`));
+    db.get(`SELECT * FROM candidate WHERE id=${id}`, (err, row) => {
+        if (err) return onError(err);
+
+        return onSuccess(row);
+    });
+};
+
+export { createUser, getUser, getCandidates, getCandidateById };

@@ -19,4 +19,26 @@ const getCandidatesController: RequestHandler = (req, res) => {
     );
 };
 
-export { getCandidatesController };
+const getCandidateByIdController: RequestHandler = (req, res) => {
+    const { id } = req.body;
+
+    if (!id || id <= 0)
+        return res
+            .status(StatusCodes.BAD_REQUEST)
+            .json({ success: false, msg: ReasonPhrases.BAD_REQUEST });
+
+    dbClient.getCandidateById(
+        id,
+        (err) => {
+            res.json({ success: false, msg: err.message });
+        },
+        (data) => {
+            res.status(StatusCodes.OK).json({
+                success: true,
+                candidate: data
+            });
+        }
+    );
+};
+
+export { getCandidatesController, getCandidateByIdController };

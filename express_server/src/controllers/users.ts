@@ -73,10 +73,13 @@ const getCurrentUserController: RequestHandler = (req, res) => {
     // use after 'authenticateJWT' middleware
     if (req.user) {
         const { username, email } = req.user;
-        return res.json({ username, email });
+        return res.json({ success: true, user: { username, email } });
     }
 
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        success: false,
+        msg: ReasonPhrases.INTERNAL_SERVER_ERROR
+    });
 };
 
 export { signUpController, signInController, getCurrentUserController };

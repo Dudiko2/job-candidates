@@ -3,11 +3,15 @@ import {
     signInController,
     getCurrentUserController
 } from "./users";
-import { getCandidatesController } from "./candidates";
+import {
+    getCandidatesController,
+    getCandidateByIdController
+} from "./candidates";
 
 export {
     signUpController,
     signInController,
     getCurrentUserController,
-    getCandidatesController
+    getCandidatesController,
+    getCandidateByIdController
 };

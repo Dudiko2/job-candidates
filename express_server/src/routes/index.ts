@@ -3,7 +3,8 @@ import {
     signUpController,
     signInController,
     getCurrentUserController,
-    getCandidatesController
+    getCandidatesController,
+    getCandidateByIdController
 } from "../controllers";
 import { authenticateJWT } from "../middleware/auth";
 
@@ -16,5 +17,7 @@ api.post("/auth/signin", signInController);
 api.get("/me", authenticateJWT, getCurrentUserController);
 
 api.get("/candidates", authenticateJWT, getCandidatesController);
+
+api.post("/candidates", authenticateJWT, getCandidateByIdController);
 
 export { api };

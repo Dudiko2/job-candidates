@@ -30,3 +30,9 @@ export type IGetCandidates = (
     onError: ErrorCallback,
     onSuccess: SuccessCallback<any[]>
 ) => void;
+
+export type IGetCandidateById = (
+    id: number,
+    onError: ErrorCallback,
+    onSuccess: SuccessCallback<any>
+) => void;

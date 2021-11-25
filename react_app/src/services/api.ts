@@ -5,6 +5,7 @@ import {
     ApiAuthResponse,
     CandidatesSuccessResponse,
     UserResponse,
+    CandidateSuccessResponse,
 } from "../@types";
 
 const axiosInstance = axios.create({
@@ -38,11 +39,22 @@ const getCandidates = (token: string) => {
     });
 };
 
+const getCandidateById = (token: string, id: number) => {
+    return axiosInstance.post<CandidateSuccessResponse>(
+        "/candidates",
+        { id },
+        {
+            headers: { Authorization: `Bearer ${token}` },
+        }
+    );
+};
+
 const apiClient = {
     getCurrentUser,
     signIn,
     signUp,
     getCandidates,
+    getCandidateById,
 };
 
 export default apiClient;

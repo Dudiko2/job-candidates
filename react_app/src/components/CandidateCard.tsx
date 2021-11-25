@@ -1,5 +1,7 @@
 import { FC } from "react";
+import { NavLink } from "react-router-dom";
 import { ICandidate } from "../@types";
+import { ROUTES } from "../constants";
 import styles from "../styles/CandidateCard.module.css";
 
 interface Props {
@@ -18,7 +20,13 @@ const CandidateCard: FC<Props> = ({ candidate }) => {
                 >{`${candidate.first_name} ${candidate.last_name}`}</span>
                 <span className={styles.job}>{candidate.job_title}</span>
             </div>
-            <button className={styles.button}>view profile</button>
+            <NavLink
+                className={styles.buttonLink}
+                to={`${ROUTES.CANDIDATES}/${candidate.id}`}
+                state={candidate}
+            >
+                <button>view profile</button>
+            </NavLink>
         </div>
     );
 };

@@ -18,6 +18,10 @@ export interface CandidatesSuccessResponse {
     success: true;
     candidates: ICandidate[];
 }
+export interface CandidateSuccessResponse {
+    success: true;
+    candidate: ICandidate;
+}
 
 export interface UserSuccessResponse {
     success: true;

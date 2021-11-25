@@ -4,7 +4,9 @@ import { ROUTES } from "../constants";
 import { useAuth } from "../lib/auth";
 
 const Home: FC = () => {
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
+
+    if (loading) return <div>loading</div>;
 
     if (user) return <Navigate to={ROUTES.CANDIDATES} />;
 

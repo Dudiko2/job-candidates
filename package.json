@@ -1,0 +1,22 @@
+{
+    "name": "job-candidates",
+    "version": "1.0.0",
+    "scripts": {
+        "install": "(cd express_server && npm install); (cd react_app && npm install)",
+        "start": "concurrently \"cd express_server && npm start\" \"cd react_app && npm start\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Dudiko2/job-candidates.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Dudiko2/job-candidates/issues"
+    },
+    "homepage": "https://github.com/Dudiko2/job-candidates#readme",
+    "devDependencies": {
+        "concurrently": "^6.4.0"
+    }
+}
